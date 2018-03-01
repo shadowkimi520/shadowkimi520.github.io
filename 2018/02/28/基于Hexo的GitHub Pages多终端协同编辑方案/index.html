@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Void_Yuan&#39;s Blog">
 <meta property="og:description" content="基于Hexo的GitHub Pages多终端协同编辑方案 使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 git &amp;amp;&amp;amp; github 命令  步骤如下：  申请GitHub账号，执行 new repository 操作 仓库名必须为">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-01T09:14:28.618Z">
+<meta property="og:updated_time" content="2018-03-01T09:17:59.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Void_Yuan&#39;s Blog">
 <meta name="twitter:description" content="基于Hexo的GitHub Pages多终端协同编辑方案 使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 git &amp;amp;&amp;amp; github 命令  步骤如下：  申请GitHub账号，执行 new repository 操作 仓库名必须为">
@@ -189,6 +189,10 @@
 </li>
 </ol>
 <p>git reflog master<br>git reset –hard master@{1} // 回滚的正确姿势</p>
+<p>存在问题：<br></p>
+<ol>
+<li>_posts文件夹下 Hexo 生成的存放图片的空文件夹不会同步到github:master</li>
+</ol>
 
       
 
@@ -281,15 +285,6 @@
 
   
 <nav id="article-nav">
-  
-    <a href="/2018/02/28/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
   
     <a href="/2017/11/03/Coding-Best-Practice/" id="article-nav-older" class="article-nav-link-wrap">
@@ -401,11 +396,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JS prototype</a>
+                <a href="javascript:void(0)" class="js-tag color4">JS Array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JS Array</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS prototype</a>
               </li>
              
               <li class="article-tag-list-item">
