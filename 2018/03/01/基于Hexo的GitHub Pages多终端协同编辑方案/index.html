@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://shadowkimi520.github.io">
-  <title>Archives: 2017 | Void_Yuan&#39;s Blog</title>
+  <title>基于Hexo的GitHub Pages多终端协同编辑方案 | Void_Yuan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JS __proto__ prototype">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Void_Yuan&#39;s Blog">
-<meta property="og:url" content="https://shadowkimi520.github.io/archives/2017/page/2/index.html">
+  <meta name="description" content="使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 git &amp;amp;&amp;amp; github 命令  步骤如下：  申请GitHub账号，执行 new repository 操作 仓库名必须为 shadowkimi520.github.io 等形式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo的GitHub Pages多终端协同编辑方案">
+<meta property="og:url" content="https://shadowkimi520.github.io/2018/03/01/基于Hexo的GitHub Pages多终端协同编辑方案/index.html">
 <meta property="og:site_name" content="Void_Yuan&#39;s Blog">
-<meta property="og:description" content="JS __proto__ prototype">
+<meta property="og:description" content="使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 git &amp;amp;&amp;amp; github 命令  步骤如下：  申请GitHub账号，执行 new repository 操作 仓库名必须为 shadowkimi520.github.io 等形式">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-02T02:41:04.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Void_Yuan&#39;s Blog">
-<meta name="twitter:description" content="JS __proto__ prototype">
+<meta name="twitter:title" content="基于Hexo的GitHub Pages多终端协同编辑方案">
+<meta name="twitter:description" content="使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 git &amp;amp;&amp;amp; github 命令  步骤如下：  申请GitHub账号，执行 new repository 操作 仓库名必须为 shadowkimi520.github.io 等形式">
   
     <link rel="alternative" href="/atom.xml" title="Void_Yuan&#39;s Blog" type="application/atom+xml">
   
@@ -153,193 +154,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-基于Hexo的GitHub Pages多终端协同编辑方案" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于Hexo的GitHub Pages多终端协同编辑方案
+    </h1>
+  
+
+        
+        <a href="/2018/03/01/基于Hexo的GitHub Pages多终端协同编辑方案/" class="archive-article-date">
+  	<time datetime="2018-03-01T06:12:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>使用Hexo并部署于GitHub Pages上的解决方案网上很多，不展开介绍了。<br>本文主要介绍如何在多个终端下同步Hexo编写的Blog文件，使得不管在哪台电脑上都能完成blog的书写工作，主要涉及 <code>git &amp;&amp; github 命令</code></li>
+</ul>
+<p>步骤如下：<br></p>
+<ol>
+<li>申请GitHub账号，执行 new repository 操作<br></li>
+<li>仓库名必须为 shadowkimi520.github.io 等形式<br> </li>
+<li>本地使用Hexo完成blog的书写<br></li>
+<li>打开blog文件夹下的_config.xml配置文件，修改deploy下的repo为对应的GitHub pages仓库，比如：<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:shadowkimi520/shadowkimi520.github.io.git；分支必须为 <a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="noopener">master</a> <br></li>
+<li><p>执行 hexo deploy 将 blog 部署到 github pages</p>
+<p>第一阶段完成，此时github上的仓库拥有master分支，并且本地blog项目目录下的.deploy_git目录中的内容在每次执行hexo deploy时候都会被推送到该分支上；第二阶段需要将blog项目下的源文件提交到该仓库的另外一个分支上，用于多终端同步。步骤二如下：<br></p>
+</li>
+<li>在Blog项目主目录下执行 git init, 将其初始化为一个 git 仓库；执行 git add themes/next/ 先将主题仓库文件纳入版本控制系统，再执行 git add . 纳入其他文件（这些文件不是git子仓库），最后执行 git commit （如果先执行 git add . ， 由于主题文件夹也是一个 git 仓库，这样操作的话主题文件夹下的文件不会被纳入版本控制系统）<br></li>
+<li>执行 git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:shadowkimi520/shadowkimi520.github.io.git<br></li>
+<li>本地git仓库创建hexo分支，用于向GitHub提交Blog源文件 <code>git checkout hexo</code><br></li>
+<li>执行 git push origin hexo命令将仓库推送到github上，由于github仓库不存在hexo分支，该命令会创建新的hexo分支</li>
+</ol>
+<p> git clone -b hexo <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:shadowkimi520/shadowkimi520.github.io.git <br><br> 从远程仓库拷贝指定的hexo分支到本地<br></p>
+<p> git rm -r –cached path/ <br> <a href="https://www.zhihu.com/question/24467417" target="_blank" rel="noopener">参考</a></p>
+<ol>
+<li>如果.git仓库中存在.git仓库，外层git仓库git add . 默认只会将内层 git 仓库所在文件夹添加进版本控制系统，文件夹里面的内容不会纳入外层的版本控制系统；除非直接先使用 git add path/ 来先添加内层仓库文件夹（必须包含 / ，否则仅添加文件夹文件）<br></li>
+<li><p>无论内层仓库是在外层仓库init之前引入的还是之后引入的，使用 git add . 不会将内层仓库纳入版本控制系统，仅将内层文件夹纳入；此时如果删除内层仓库的 .git 文件，依旧不能添加内层仓库文件夹内的文件，需要使用上述命令清空内层仓库在外层仓库中的缓存，并再次 git add 对应文件夹后才能纳入版本控制系统<br></p>
+<p>git push –force|-f -u origin master:hexo <br></p>
+</li>
+<li>在多终端提交blog源文件到github的时候如果不想拉取其他机器提交的内容，使用 –force 参数直接覆盖 github 上的内容 [See the ‘Note about fast-forwards’ in ‘git push –help’ for details] <br></li>
+<li><p>-u 参数用于关联两个分支</p>
+<p>git push &lt;远程库名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;<br>git pull &lt;远程库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</p>
+</li>
+</ol>
+<p>git reflog master<br>git reset –hard master@{1} // 回滚的正确姿势</p>
+<p>存在问题：<br></p>
+<ol>
+<li>_posts文件夹下 Hexo 生成的存放图片的空文件夹不会同步到github:master</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/JavaScript正则表达式/" class="archive-article-date">
-  	<time datetime="2017-05-16T02:38:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/JavaScript正则表达式/">JavaScript正则表达式</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://shadowkimi520.github.io/2018/03/01/基于Hexo的GitHub Pages多终端协同编辑方案/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/15/JS-Array方法/" class="archive-article-date">
-  	<time datetime="2017-05-15T06:33:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/15/JS-Array方法/">JavaScript: Array方法</a>
-    </h1>
+  
+    <a href="/2017/11/03/Coding-Best-Practice/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Coding_Best_Practice</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JS Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/15/值-类型-变量/" class="archive-article-date">
-  	<time datetime="2017-05-15T02:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/15/值-类型-变量/">值&amp;&amp;类型&amp;&amp;变量</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS primitive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/Markdown-syntax/" class="archive-article-date">
-  	<time datetime="2017-05-14T12:47:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/Markdown-syntax/">Markdown syntax</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/JS原型继承机制/" class="archive-article-date">
-  	<time datetime="2017-05-14T05:16:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/JS原型继承机制/">JS原型继承机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS prototype</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -363,8 +342,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
